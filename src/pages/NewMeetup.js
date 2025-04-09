@@ -1,7 +1,24 @@
 import NewMeetupForm from "../Components/meetups/NewMeetupForm";
 
 function NewMeetupPage() {
-  function addMeetupHandler(meetupData) {}
+  function addMeetupHandler(meetupData) {
+    fetch(
+      "https://react-getting-started-f0782-default-rtdb.firebaseio.com/meetups.json",
+      {
+        method: "POST",
+        body: JSON.stringify(meetupData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then(() => {
+        alert("Meetup added successfully!");
+      })
+      .catch((error) => {
+        console.error("Error adding meetup:", error);
+      });
+  }
 
   return (
     <section>
