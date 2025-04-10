@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import NewMeetupForm from "../Components/meetups/NewMeetupForm";
 
 function NewMeetupPage() {
+  const navigate = useNavigate();
+
   function addMeetupHandler(meetupData) {
     fetch(
       "https://react-getting-started-f0782-default-rtdb.firebaseio.com/meetups.json",
@@ -14,6 +17,7 @@ function NewMeetupPage() {
     )
       .then(() => {
         alert("Meetup added successfully!");
+        navigate("/");
       })
       .catch((error) => {
         console.error("Error adding meetup:", error);
