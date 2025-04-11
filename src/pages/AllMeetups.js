@@ -25,7 +25,7 @@ function AllMeetups() {
         }
 
         setIsLoading(false);
-        setLoadedMeetups(meetups); // This should be the meetups array
+        setLoadedMeetups(meetups);
       });
   }, []);
 
