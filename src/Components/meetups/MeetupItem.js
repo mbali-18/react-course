@@ -5,17 +5,16 @@ import classes from "./MeetupItem.module.css";
 import FavoritesContext from "../../store/favorites-context";
 
 function MeetupItem(props) {
-  const FavoritesCtx = useContext(FavoritesContext);
+  const favoritesCtx = useContext(FavoritesContext);
 
-  const itemIsFavorite = FavoritesCtx.itemFavorite(props.id);
-
+  const itemIsFavorite = favoritesCtx.itemIsFavorite(props.id);
   function toggleFavoritesStatusHandler() {
     if (itemIsFavorite) {
-      FavoritesCtx.removeFavorite(props.id);
+      favoritesCtx.removeFavorite(props.id);
     } else {
-      FavoritesCtx.addFavorite({
+      favoritesCtx.addFavorite({
         id: props.id,
-        title: props.id.title,
+        title: props.title,
         description: props.description,
         image: props.image,
         address: props.address,
